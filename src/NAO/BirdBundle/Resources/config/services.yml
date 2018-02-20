@@ -1,0 +1,3 @@
+services:
+    nao_bird.checkForm:
+        class: NAO\BirdBundle\CheckForm\CheckForm

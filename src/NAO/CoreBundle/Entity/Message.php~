@@ -1,0 +1,148 @@
+<?php
+
+namespace NAO\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Message
+ *
+ * @ORM\Table(name="message")
+ * @ORM\Entity(repositoryClass="NAO\CoreBundle\Repository\MessageRepository")
+ */
+class Message
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255, unique=true)
+     * @Assert\Regex(
+     *      pattern="/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/",
+     *      message="Votre mail n'est pas au bon format. Exemple : adresse@mail.com")
+     * @Assert\NotBlank()
+     */
+    private $mail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez rédiger votre message.")
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime")
+     * @Assert\Type("datetime")
+     */
+    private $createAt;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="msg_read", type="boolean")
+     * @Assert\Type("boolean")
+     */
+    private $msgRead;
+
+    public function __construct()
+    {
+        $this->setCreateAt(new \DateTime);
+        $this->setMsgRead(false);
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Messsage
+     */
+    public function setContent($content)
+    {
+        $this->content = htmlspecialchars($content);
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createAt
+     *
+     * @return Messsage
+     */
+    public function setCreateAt($createAt)
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createAt
+     *
+     * @return \DateTime
+     */
+    public function getCreateAt()
+    {
+        return $this->createAt;
+    }
+
+    /**
+     * Set msgRead
+     *
+     * @param boolean $msgRead
+     *
+     * @return Message
+     */
+    public function setMsgRead($msgRead)
+    {
+        $this->msgRead = $msgRead;
+
+        return $this;
+    }
+
+    /**
+     * Get msgRead
+     *
+     * @return bool
+     */
+    public function getMsgRead()
+    {
+        return $this->msgRead;
+    }
+}

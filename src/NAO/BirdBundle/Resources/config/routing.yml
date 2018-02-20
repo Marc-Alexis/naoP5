@@ -1,0 +1,39 @@
+nao_bird_login:
+    path:     /login
+    defaults: { _controller: NAOBirdBundle:Bird:login }
+
+nao_bird_register:
+    path: /register
+    defaults: { _controller: NAOBirdBundle:Bird:register }
+
+nao_bird_map:
+    path: /mapBird
+    defaults: { _controller: NAOBirdBundle:Bird:birdMap }
+
+nao_bird_new_obs:
+    path: /newObs
+    defaults: { _controller: NAOBirdBundle:Bird:newObs }
+
+nao_bird_admin:
+    path: /admin
+    defaults: { _controller: NAOBirdBundle:Bird:admin }
+
+nao_bird_edit_obs:
+    path: /editObs
+    defaults: { _controller: NAOBirdBundle:Bird:editObs }
+
+nao_bird_edit_user:
+    path: /editUser
+    defaults: { _controller: NAOBirdBundle:Bird:editUser }
+
+nao_bird_edit_message:
+    path: /editMessage
+    defaults: { _controller: NAOBirdBundle:Bird:editMessage }
+
+nao_bird_results_search_birds:
+    path: /resultsSearchBirds
+    defaults: { _controller: NAOBirdBundle:Bird:resultsSearchBirds }
+
+nao_bird_homepage:
+    path: /homepage
+    defaults: { _controller: NAOBirdBundle:Bird:homepage }

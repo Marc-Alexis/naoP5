@@ -1,0 +1,22 @@
+nao_bird:
+    resource: "@NAOBirdBundle/Resources/config/routing.yml"
+    prefix:   /bird
+
+nao_core:
+    resource: "@NAOCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    path: /login
+    defaults:
+        _controller: NAOBirdBundle:Bird:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

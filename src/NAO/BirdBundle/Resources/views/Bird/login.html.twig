@@ -1,0 +1,107 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	<section id="loginPage">
+		<!-- Message flash -->
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					<i class="fa fa-info-circle" aria-hidden="true"></i> {{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<div class="container">
+
+			<div class="row">
+			
+				<!-- Illustration -->
+				<div class="col-md-5" id="partBirdIllustration">
+					<img src="{{ asset('bird.png') }}" alt="Bird" id="birdIllustration">
+					<img src="{{ asset('birdRes.png') }}" alt="Bird" id="birdResIllustration">
+				</div>
+
+				<!-- Connexion -->
+				<div class="col-md-6" id="partFormLogin">
+
+					<!-- Menu nav -->
+					<nav class="nav nav-tabs" id="myTab" role="tablist">
+
+						<!-- Connexion -->
+						<a class="nav-item nav-link active" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-expanded="true">CONNEXION</a>
+						<!-- Inscrivez-vous -->
+						<a class="nav-item nav-link" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-expanded="true">INSCRIVEZ-VOUS</a>
+
+					</nav>
+
+					<div class="tab-content" id="nav-tabContent">
+
+						<!-- Connexion -->
+						<div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+							
+							<form action="{{ path('login_check') }}" method="POST" id="loginForm">
+								{% if error %}
+									<div class="alert alert-danger">
+										<i class="fa fa-info-circle" aria-hidden="true"></i> Votre e-mail et/ou votre mot de passe est/sont incorrectes.
+									</div>
+								{% endif %}
+
+								<div class="form-group">
+									<input type="text" id="username" name="_username" class="form-control" placeholder="E-mail..." value="{{ last_username }}">
+								</div>
+
+								<div class="form-group">
+									<input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe...">
+								</div>
+
+								<br>
+								<button type="submit" class="btn btn-outline-primary"> CONNEXION</button>
+							</form>
+						</div>
+
+						<!-- Inscription -->
+						<div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+							{{ form_start(userType, {'attr': {'id': 'registerForm'}}) }}
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_widget(userType.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom...'}}) }}
+											{{ form_errors(userType.firstname) }}
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_widget(userType.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom de famille...'}}) }}
+											{{ form_errors(userType.lastname) }}
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									{{ form_widget(userType.username, {'attr': {'class': 'form-control', 'placeholder': 'Votre adresse e-mail...'}}) }}
+									{{ form_errors(userType.username) }}
+								</div>
+
+								<div class="form-group">
+									{{ form_widget(userType.password, {'attr': {'class': 'form-control', 'placeholder': 'Votre mot de passe...'}}) }}
+									{{ form_errors(userType.password) }}
+								</div>
+
+								<br>
+								<button type="submit" class="btn btn-outline-primary">INSCRIPTION</button>
+							{{ form_end(userType) }}
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		  
+	</section>
+
+{% endblock %}

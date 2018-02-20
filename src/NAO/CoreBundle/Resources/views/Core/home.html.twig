@@ -1,0 +1,99 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}" id="msgAdmin">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	<section id="homePage">
+
+		<div id="participate">
+			<div class="container">
+				<div id="sentenceParticipate">
+					Rejoignez <span id="naoParticipate">Nos amis les oiseaux</span>, la communauté de possionnés d'ornithologie et venez observer et partager les plus belles espèces d'oiseaux.
+				</div>
+				
+				<div id="btnParticipate">
+					<a href="{{ path('login') }}" title="Participez !">PARTICIPEZ !</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="contribute">
+			<p id="mapPhoto">
+				<img src="{{ asset('homePhoto.png') }}" alt="Carte d'accueil">
+			</p>
+			
+			<p id="mapPhotoRes">
+				<img src="{{ asset('homePhotoRes.png') }}" alt="Carte d'accueil Responsive">
+			</p>
+
+			<p id="btnContribute">
+				<a href="{{ path('nao_bird_new_obs') }}" title="Ajoutez une nouvelle obserbation">CONTRIBUEZ À L'AVENTURE en ajoutant une nouvelle observation !</a>
+			</p>
+
+		</div>
+
+		<div id="welcomeMessage">
+			<div class="container">
+
+				<p>1- CREEZ VOTRE COMPTE EN MOINS D UNE MINUTE<br>
+				Simple et rapide, il vous suffit simplement de cliquer <a href="{{ path('nao_bird_login') }}" title="connexion">ici</a><p>
+
+				<p>2- RENSEIGNEZ VOS OBSERVATIONS<br>
+				Il vous suffit de vous rendre sur la page observation ou directement depuis la carte pour informer vos observations</p>
+
+				<p>3- PARTAGEZ TOUTES VOS OBERVATIONS<br>
+				Vous pouvez vous rendre également sur notre page Facebook et Instagram pour partager vos observations</p>
+
+				
+			</div>
+
+		</div>
+
+		<div id="newsletter">
+			<div class="container">
+				<p>
+					NEWSLETTER
+				</p>
+
+				<p>
+					Inscrivez-vous à la Newsletter, afin d'être informé des dernières actues de NAO.
+				</p>
+
+				{{ form_start(newsletterType, {'attr': {'id': 'newsletterForm'}} ) }}
+
+					<div id="newsletterFormErrors">
+						{{ form_errors(newsletterType.mail) }}
+					</div>
+
+					{{ form_widget(newsletterType.mail, {'attr': {'placeholder': 'Votre e-mail...'}}) }}
+
+					<button type="submit">S'INSCRIRE</button>
+
+				{{ form_end(newsletterType) }}
+			</div>
+		</div>
+
+		<div id="socialNetworkHome">
+			<div class="container">
+
+				SUIVEZ-NOUS SUR :
+
+				<ul id="links">
+					<li><a href="https://www.facebook.com/ssociationNAO/" title="Facebook" target="_blank"><i class="fa fa-facebook-official fa-4x" aria-hidden="true"></i></a></li>
+					<li><a href="https://www.instagram.com/nao_appli/?hl=fr" title="Instagram" target="_blank"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a></li>
+				</ul>
+
+			</div>
+		</div>
+		
+		
+	</section>
+
+{% endblock %}

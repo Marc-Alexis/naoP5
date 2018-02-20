@@ -1,0 +1,59 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	<section id="birdMapPage">
+
+		<div id="blockSearchBird">
+			<div class="container">
+				<div class="row">
+					<!-- Ajouter une nouvelle observation -->
+					<div class="col-sm-12" id="partNewObs">
+						<a href="{{ path('nao_bird_new_obs') }}" title="Ajouter une nouvelle observation">Ajouter une nouvelle observation</a>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<!-- Input select -->
+					<div class="col-sm-12" id="partSearchBird">
+						<div class="form-group">
+							<input type="text" name="species" placeholder="Entrer le nom d'une espèce ou d'un oiseau..." class="form-control" id="birdSearchBar">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Résultat de recherche -->
+					<div class="col-sm-12" id="partResult">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Map -->
+		<div id="map"></div>
+
+		{% for obs in observations %}
+
+			<input type="hidden" id="birdname{{ loop.index }}" value="{{ obs.birdname }}"><input type="hidden" id="species{{ loop.index }}" value="{{ obs.species }}"><input type="hidden" id="lat{{ loop.index }}" value="{{ obs.latitude }}"><input type="hidden" id="lng{{ loop.index }}" value="{{ obs.longitude }}"><input type="hidden" id="date{{ loop.index }}" value="{{ obs.date|date('d/m/Y à H:i') }}"><input type="hidden" id="filename{{ loop.index }}" value="{{ obs.photo.filename }}"><input type="hidden" id="alt{{ loop.index }}" value="{{ obs.photo.alt }}"><input type="hidden" id="firstname{{ loop.index }}" value="{{ obs.user.firstname }}"><input type="hidden" id="lastname{{ loop.index }}" value="{{ obs.user.lastname }}">
+
+		{% else %}
+
+		{% endfor %}
+		
+		<input type="hidden" id="obsQuantity"value="{{ obsQuantity }}">
+
+		{% if is_granted('ROLE_NAT') %}
+
+			<input type="hidden" id="who" value="nat">
+
+		{% else %}
+
+			<input type="hidden" id="who" value="rand">
+
+		{% endif %}
+
+	</section>
+
+{% endblock %}

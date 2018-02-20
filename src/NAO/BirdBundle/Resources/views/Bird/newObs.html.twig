@@ -1,0 +1,94 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+	
+	<section id="newObsPage">
+
+		<!-- Message flash -->
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}" id="msgNewObs">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<!-- Google map -->
+		<div id="findPosition"></div>
+
+		{% if is_granted('ROLE_USER') %}
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						
+						{{ form_start(observationType, {'attr': {'id': 'newObsForm'}}) }}
+							<!-- Observation -->
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="birdname">NOM DE L'OISEAU</label>
+										<select name="birdname" class="form-control">
+											<option value="-">Choisir l'espèce</option>
+											{% for aves in avesBirds %}
+												<option value="{{ aves.id }}">{{ aves.nomVern }} ({{ aves.famille }})</option>
+											{% else %}
+												Pas d'information dans la table Aves.
+											{% endfor %}
+										</select>
+										{{ form_errors(observationType) }}
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									{{ form_label(observationType.date, 'DATE DE L\'OBSERVATION') }}
+									{{ form_widget(observationType.date) }}
+									{{ form_errors(observationType.date) }}
+								</div>
+							</div>
+
+							<div class="row">
+								<!-- Lat and Lng input -->
+								<div class="col-lg-6">
+									<div class="form-group">
+										{{ form_label(observationType.latitude, 'LATITUDE') }}
+										{{ form_widget(observationType.latitude, {'attr': {'class': 'form-control', 'placeholder': 'Utilisez la carte pour entrer les coordonnées...'}}) }}
+										{{ form_errors(observationType.latitude) }}
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										{{ form_label(observationType.longitude, 'LONGITUDE') }}
+										{{ form_widget(observationType.longitude, {'attr': {'class': 'form-control', 'placeholder': 'Utilisez la carte pour entrer les coordonnées...'}}) }}
+										{{ form_errors(observationType.longitude) }}
+									</div>
+								</div>
+							</div>
+
+							<!-- Photo -->
+							<div class="form-group">
+								{{ form_label(observationType.photo.file, 'PHOTOGRAPHIE (Obligatoire)') }}
+								{{ form_widget(observationType.photo.file, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(observationType.photo.file) }}
+							</div>
+
+							<button type="submit" class="btn btn-outline-primary"> ENREGISTRER</button>
+						{{ form_end(observationType) }}
+					</div>
+				</div>
+			</div>
+		{% else %}
+		<div class="row">
+			<div class="col-lg-6" id="loginYou">
+				<div class="alert alert-primary">
+					<strong><a href="{{ path('nao_bird_login') }}" title="Connectez-vous">Connectez-vous</a></strong> pour ajouter une nouvelle observation.
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		<br>
+		<br>
+
+	</section>
+
+{% endblock %}

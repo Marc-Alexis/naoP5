@@ -1,0 +1,845 @@
+/* GENERALE */
+
+body
+{
+	background: #F8F8F9;
+	border-radius: 0px;
+	text-align: justify;
+	outline: none;
+	font-family: 'Quicksand', sans-serif;
+}
+
+/* NAVBAR */
+
+nav
+{
+	background: white;
+	max-width: 100%;
+}
+
+.container-fluid
+{
+	margin-left: 6%;
+	max-width: 100%;
+}
+
+.nav-item a, .navbar-brand, .navbar-brand:hover,
+i[class="fa fa-bars fa-2x"]
+{
+	color: #5C821A;
+}
+
+.nav-item
+{
+	margin-right: 25px;
+}
+
+.nav-item .nav-link img
+{
+	width: 20px;
+}
+
+.navbar-brand img
+{
+	width: 60px;
+}
+
+.nav-item:hover
+{
+	border-bottom: 3px solid #5C821A;
+}
+
+#adminPage, #contactPage
+{
+	margin-top: 100px;
+}
+
+#burgerMenu
+{
+	background: #5C821A;
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding: none;
+	z-index: 1000;
+	width: 100%;
+	max-width: 100%;
+}
+
+#closeButton
+{
+	margin-left: 80%;
+}
+
+#closeButton img
+{
+	width: 25px;
+}
+
+#itemBurgerMenu
+{
+	padding-top: 20px;
+}
+
+#itemBurgerMenu a[href="/nao/web/app_dev.php/"]
+{
+	margin-top: 20px;
+}
+
+#itemBurgerMenu a
+{
+	color: white;
+	text-align: center;
+	list-style-type: none;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+#itemBurgerMenu a:hover
+{
+	text-decoration: none;
+}
+
+#itemBurgerMenu .nav-link
+{
+	border-top: 1px solid white;
+}
+
+#navbarSupportedContent
+{
+	margin-left: 350px;
+}
+
+/* FOOTER */
+
+footer
+{
+	width: 100%;
+	max-width: 100%;
+	color: white;
+	text-align: center;
+	height: 35px;
+	background: #5B5B5B;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+footer li
+{
+	display: inline-block;
+	line-height: 35px;
+}
+
+/* MESSAGE */
+
+div[class*="alert alert"]
+{
+	color: white;
+	border: none;
+	border-radius: 0px;
+}
+
+div[class*="alert alert-notice"]
+{
+	background: #C9C9CF;
+}
+
+div[class*="alert alert-primary"]
+{
+	background: #5C821A;
+}
+
+div[class*="alert alert-danger"]
+{
+	background: #D03939;
+}
+
+div[class*="alert alert-success"]
+{
+	background: #89D239;
+}
+
+div[class*="alert alert"] a
+{
+	color: white;
+}
+
+/* HOME SITE PAGE */
+
+#homePage
+{
+	margin-top: 95px;
+}
+
+#participate
+{
+	height: 80px;
+	margin-bottom: 1%;
+}
+
+#naoParticipate
+{
+	color: #5C821A;
+}
+
+#sentenceParticipate
+{
+	text-align: center;
+}
+
+#btnParticipate
+{
+	color: white;
+	background: #5C821A;
+	padding: 5px;
+	border-radius: 50px;
+	width: 220px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#btnParticipate a
+{
+	color: white;
+}
+
+#btnParticipate a:hover
+{
+	text-decoration: none;
+}
+
+#mapPhoto
+{
+	padding: none;
+	height: auto;
+	margin-left: 6%;
+	margin-right: 6%;
+	max-width: 100%;
+}
+
+#mapPhoto img
+{
+	max-width: 100%;
+}
+
+#mapPhotoRes
+{
+	display: none;
+}
+
+#btnContribute
+{
+	color: white;
+	width: 520px;
+	background: #5C821A;
+	text-align: center;
+	padding: 8px;
+	border-radius: 50px;
+	margin: auto;
+}
+
+#btnContribute a
+{
+	color: white;
+}
+
+#btnContribute a:hover
+{
+	text-decoration: none;
+}
+
+#welcomeMessage
+{
+	padding-top: 40px;
+	padding-bottom: 30px;
+	text-align: center;
+	border-bottom: 1px solid #5C821A;
+}
+
+#newsletter
+{
+	text-align: center;
+	border-bottom: 1px solid #5C821A;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#newsletterForm input
+{
+	color: #5C821A;
+	border-radius: 0px;
+	width: 250px;
+	padding: 8px 0px 8px 4px;
+	border: none;
+	outline: none;
+}
+
+#newsletterForm button
+{
+	color: white;
+	font-weight: bold;
+	background: #5C821A;
+	border-radius: 0px;
+	border: 1px solid #5C821A;
+	padding: 8px 0px 8px 0px;
+	width: 150px;
+}
+
+#newsletterFormErrors ul li
+{
+	color: #D03939;
+	font-weight: bold;
+	list-style-type: none;
+}
+
+#socialNetworkHome
+{
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+	text-align: center;
+}
+
+#links
+{
+	list-style-type: none;
+	display: inline-block;
+}
+
+#links li
+{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+#links li a
+{
+	color: #5C821A;
+}
+
+/*MAP PAGE*/
+
+#birdMapPage
+{
+	margin-top: 86px;
+	max-width: 100%;
+}
+
+#blockSearchBird
+{
+	padding-top: 30px;
+	max-width: 100%;
+}
+
+#partNewObs
+{
+	text-align: center;
+	background: #5C821A;
+	margin-bottom: 10px;
+	border-radius: 50px;
+	height: 35px;
+	width: 300px;
+	margin: auto;
+}
+
+#partNewObs a
+{
+	color: white;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+}
+
+#birdSearchBar
+{
+	color: #5C821A;
+	border: none;
+}
+
+#partResult button
+{
+	color: white;
+	font-weight: bold;
+	background: #5C821A;
+	border-radius: 0px;
+	border: 1px solid #5C821A;
+}
+
+#map
+{
+	color: #5C821A;
+	width: 100%;
+	max-width: 100%;
+	height: 800px;
+	margin-top: 45px;
+	padding: none;
+}
+
+#photoContent
+{
+	margin: 0px;
+	padding: 0px;
+	width: 160px;
+}
+
+#birdPhotoMap
+{
+	height: auto;
+	width: 100%;
+	margin: 0px;
+}
+
+#birdMapPage .row, #birdMapPage .col-lg-8,
+#birdMapPage .col-lg-4
+{
+	padding: 0px;
+}
+
+#partSearchBird
+{
+	margin-bottom: 0px;
+}
+
+#partResults
+{
+	margin-top: 0px;
+	padding: 5px 0px 5px 5px;
+}
+
+.birdResult:hover
+{
+	background: white;
+	color: #5C821A;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+#results
+{
+	background: #5C821A;
+}
+
+/* NEWS OBS PAGE */
+
+#newObsPage
+{
+	margin-top: 86px;
+	max-width: 100%;
+}
+
+#newObsForm
+{
+	color: white;
+	background: #5C821A;
+	padding: 15px;
+}
+
+#newObsForm ul li
+{
+	list-style-type: none;
+}
+
+#newObsForm a
+{
+	text-decoration: none;
+}
+
+#newObsForm input, #newObsForm select
+{
+	color: white;
+	background: #5C821A;
+	border-radius: 0px;
+	border: none;
+	border-bottom: 2px solid white;
+}
+
+#newObsForm select
+{
+	height: 60px;
+}
+
+#newObsForm select option
+{
+	width: 100%;
+	max-width: 100%;
+}
+
+#newObsForm  button
+{
+	color: #5C821A;
+	background: white;
+	border-radius: 0px;
+	border: 1px solid #5C821A;
+}
+
+#newObsPage div[class*="alert alert"]
+{
+	margin-bottom: 0px;
+}
+
+#findPosition
+{
+	width: 1400px;
+	max-width: 100%;
+	height:  400px;
+	margin: auto;
+	border-bottom: 2px solid white;
+}
+
+#msgNewObs
+{
+	margin-top: 86px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+#loginYou
+{
+	margin-left: 100px;
+}
+
+/* HOMEPAGE PAGE */
+
+#homepagePage
+{
+	max-width: 100%;
+	margin-top: 200px;
+}
+
+#homepageTitle
+{
+	color: white;
+	background: #5C821A;
+	margin-bottom: 0px;
+	padding: 5px 0px 5px 5px;
+	width: 1400px;
+	margin: auto;
+	max-width: 100%;
+}
+
+#homepagePage table tr th
+{
+	color: #5B5B5B;
+	background: white;
+	font-weight: bold;
+	border-bottom: 2px solid #5B5B5B;
+}
+
+#blockObsUser
+{
+	margin-top: 0px;
+	width: 100%;
+	max-width: 100%;
+}
+
+#blockObsUser table
+{
+	width: 1400px;
+	margin: auto;
+	max-width: 100%;
+}
+
+#blockObsUser table td
+{
+	color: #5C821A;
+}
+
+#rowDataUser
+{
+	background: white;
+}
+
+/* LOGIN PAGE */
+
+#loginPage
+{
+	margin-top: 300px;
+	width: 100%;
+	max-width: 100%;
+}
+
+#loginForm, #registerForm
+{
+	color: #5C821A;
+	background: white;
+	padding: 20px;
+}
+
+#registerForm ul li
+{
+	color: #D03939;
+	font-weight: bold;
+	list-style-type: none;  
+}
+
+#loginForm input, #registerForm input
+{
+	color: #5C821A;
+	border-radius: 0px;
+	border: none;
+	border-bottom: 2px solid #5C821A;
+}
+
+#loginForm button, #registerForm button
+{
+	color: white;
+	font-weight: bold;
+	background: #5C821A;
+	border-radius: 0px;
+	border: 1px solid #5C821A;
+}
+
+#nav-login-tab, #nav-register-tab
+{
+	color: #C9C9CF;
+	font-weight: bold;
+	background: white;
+	border-radius: 0px;
+	border: none;
+	padding: 5px;
+	max-width: 100%;
+}
+
+#nav-login-tab:hover, #nav-register-tab:hover
+{
+	border: none;
+	border-radius: 0px;
+}
+
+#nav-login-tab:focus, #nav-register-tab:focus
+{
+	color: white;
+	background: #5C821A;
+	border-radius: 0px;
+}
+
+#partBirdIllustration
+{
+	padding: 0px;
+}
+
+#partFormLogin
+{
+	padding: 0px;
+	margin-left: 0px;
+	height: 360px;
+	max-width: 100%;
+}
+
+#partFormLogin #myTab
+{
+	margin-top: 0px;
+	border-bottom: none;
+}
+
+#partFormLogin #myTab, #partFormLogin #nav-tabContent
+{
+	width: 490px;
+}
+
+#birdIllustration
+{
+	height: 360px;
+}
+
+#birdResIllustration
+{
+	display: none;
+}
+
+/*ABOUT PAGE*/
+
+#aboutPage
+{
+	margin-top: 125px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#colLeft
+{
+	border-right: 10px solid #F8F8F9;
+}
+
+#blockBirdFriend, #blockStudyBird, #blockAssoc
+{
+	padding: 10px 15px 10px 15px;
+	background: white;
+}
+
+#titleBirdFriend, #titleStudyBird,
+#titleAssoc
+{
+	color: white;
+	background: #5C821A;
+	padding: 5px 15px 5px 15px;
+	margin-bottom: 0px;
+}
+
+/* CONTACT PAGE */
+
+#contactPage
+{
+	margin-top: 250px;
+	margin-bottom: 240px;
+}
+
+#contactTitle
+{
+	color: white;
+	font-weight: bold;
+	background: #5B5B5B;
+	padding: 10px 0px 10px 20px;
+	margin-bottom: 0px;
+}
+
+#formContact, #coord
+{
+	background: white;
+}
+
+#coord
+{
+	color: #5C821A;
+}
+
+#address
+{
+	color: #5B5B5B;	
+}
+
+#messageForm input, #messageForm textarea
+{
+	color: #5C821A;
+	border: none;
+	border-bottom: 1px solid #5B5B5B;
+}
+
+#messageForm button
+{
+	color: white;
+	font-weight: bold;
+	background: #5C821A;
+	border: 1px solid #5C821A;
+	border-radius: 0px;
+}
+
+#msgContact
+{
+	margin-top: 86px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+#messageForm ul li
+{
+	color: #D03939;
+	font-weight: bold;
+	list-style-type: none; 
+} 
+
+/* ADMIN PAGE */
+
+#adminPage
+{
+	max-width: 100%;
+}
+
+#birdPhoto
+{
+	height: 100px;
+	width: 100px;
+}
+
+#nav-obs-tab, #nav-user-tab, #nav-message-tab,
+#nav-newsletter-tab
+{
+	color: white;
+	background: #5B5B5B;
+	border-radius: 0px;
+	margin-right: 0px;
+	border: 1px solid white;
+}
+
+#nav-obs-tab:focus, #nav-user-tab:focus, #nav-message-tab:focus,
+#nav-newsletter-tab:focus
+{
+	color: white;
+	background: #5C821A;
+	border-radius: 0px;
+}
+
+#nav-obs-tab:hover, #nav-user-tab:hover, #nav-message-tab:hover
+#nav-newsletter-tab:hover
+{
+	border-radius: 0px;
+}
+
+#nav-tabContent
+{
+	background: white;
+	color: #5C821A;
+	width: 1400px;
+	margin: auto;
+}
+
+th
+{
+	background: #5C821A;
+	color: white;
+}
+
+#nav-tabContent button
+{
+	color: white;
+	font-weight: bold;
+	border-radius: 0px;
+	outline: none;
+}
+
+#nav-tabContent button[class="btn btn-outline-primary"]
+{
+	background: #5C821A;
+	border: 1px solid #5C821A;
+}
+
+#nav-tabContent button[class="btn btn-outline-warning"]
+{
+	background: #f39c12;
+	border: 1px solid #f39c12;
+}
+
+#adminTitle
+{
+	color: white;
+	background: #5C821A;
+	padding: 5px 15px 5px 15px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	width: 1400px; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#myTab
+{
+	width: 1400px;
+	margin: auto;
+}
+
+#msgAdmin
+{
+	margin-top: 86px;
+	margin-bottom: 0px;
+	text-align: center;
+}

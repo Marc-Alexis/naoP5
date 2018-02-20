@@ -1,0 +1,304 @@
+/* RESPONSIVE WEB DESIGN */ 
+
+@media all and (max-width: 1400px)
+{
+	#mapPhoto, #btnContribute
+	{
+		display: block;
+	}
+
+	#btnContribute
+	{
+		width: 600px;
+		margin: auto;
+		margin-top: 40px;
+	}
+}
+
+@media all and (max-width: 1225px)
+{
+	#btnParticipate
+	{
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+
+	#mapPhoto
+	{
+		margin-top: 40px;
+	}
+}
+
+@media all and (max-width: 1200px)
+{
+	#loginPage
+	{
+		margin-top: 200px;
+	}
+
+	#birdIllustration
+	{
+		display: none;
+	}
+
+	#birdResIllustration
+	{
+		display: block;
+	}
+
+	#partBirdIllustration, #partFormLogin
+	{
+		display: inline-block;
+	}
+
+}
+
+@media all and (max-width: 925px)
+{
+	/* Navbar */
+
+	#navbarSupportedContent, #webAgency, #rightWeb
+	{
+		display: none;
+	}
+
+	/* Footer*/
+
+	#findPosition
+	{
+		width: 100%;
+	}
+
+	#partBirdIllustration
+	{
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#loginPage
+	{
+		margin-top: 100px;
+	}
+
+	#birdResIllustration
+	{
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	#birdIllustration
+	{
+		display: none;
+	}
+
+	#contactPage
+	{
+		margin-top: 150px;
+	}
+
+	#loginYou
+	{
+		margin-left: 0px;
+	}
+
+	#homepageTitle
+	{
+		width: 498px;
+	}
+
+	#blockObsUser table
+	{
+		width: auto;
+	}
+
+	#participate
+	{
+		margin-bottom: 30px;
+	}
+}
+
+@media all and (max-width: 800px)
+{
+	#mapPhoto
+	{
+		margin-top: 100px;
+	}
+}
+
+@media all and (max-width: 630px)
+{
+	#btnContribute
+	{
+		width: auto;
+		margin-left: 2%;
+		margin-right: 2%; 
+	}
+}
+
+@media all and (max-width: 500px)
+{
+	body
+	{
+		font-size: 1.5em;
+	}
+
+	#basicMenu
+	{
+		width: 100%;
+		max-width: 100%;
+	}
+
+	/* Observation */
+
+	#participate
+	{
+		margin-bottom: 200px;
+	}
+
+	#newsletterForm input, #newsletterForm button
+	{
+		display: block;
+	}
+
+	#newsletterForm button
+	{
+		margin-top: 10px;
+		width: 254px;
+	}
+
+	#mapPhoto
+	{
+		display: none;
+	}
+
+	#mapPhotoRes
+	{
+		margin-top: 140px; 
+		width: 215px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+
+	#navbarSupportedContent
+	{
+		margin-left: 0px;
+	}
+
+	#nav-login-tab, #nav-register-tab
+	{
+		display: block;
+		font-weight: normal;
+	}
+
+	#loginForm input, #registerForm input, #messageForm input, 
+	#messageForm textarea, #messageForm button,
+	#loginForm button, #registerForm button
+	{
+		max-width: 100%;
+		font-size: 1.1em;
+	}
+
+	.container-fluid
+	{
+		margin-left: 0%;
+	}
+
+	#nav-login, #nav-register
+	{
+		width: 375px;
+		padding: 5px;
+		max-width: 100%;
+	}
+
+	#birdResIllustration
+	{
+		width: 100%;
+		margin: auto;
+	}
+
+	/* Admin page */
+
+	#adminTitle, #myTab, #nav-tabContent
+	{
+		width: 100%;
+		max-width: 100%;
+	}
+
+	footer
+	{
+		font-size: 0.8em;
+		height: 30px
+	}
+
+	footer li
+	{
+		line-height: 30px
+	}
+
+	#rightWeb, #webAgency
+	{
+		display: none;
+	}
+
+	#partNewObs
+	{
+		height: 80px;
+	}
+
+	#partSearchBird
+	{
+		margin-top: 25px;
+	}
+
+}
+
+@media all and (max-width: 365px)
+{
+	#mapPhoto
+	{
+		display: none;
+	}
+
+	#mapPhotoRes
+	{
+		margin-top: 140px; 
+		width: 215px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+}
+
+@media all and (max-width: 326px)
+{
+	#nav-login-tab, #nav-register-tab
+	{
+		display: inline;
+		font-weight: normal;
+		font-size: 11px;
+	}
+
+	#nav-login-tab:focus, #nav-register-tab:focus,
+	#nav-login-tab:active, #nav-register-tab:active
+	{
+		display: inline;
+	}
+
+	table
+	{
+		overflow-x: auto; 
+	}
+
+	#blockWelcome
+	{
+		margin-bottom: 350px;
+	}
+
+	#contribute
+	{
+		margin-top: 350px;
+	}
+
+
+}

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg fixed-top" id="basicMenu">
+	<div class="container-fluid">
+		<!-- Brand -->
+		<a href="{{ path('nao_core_home') }}" title="Accueil Nos Amis les Oiseaux" class="navbar-brand"><img src="{{ asset('naoLogo.png') }}" alt="Logo Nos Amis les Oiseaux"/></a>
+		<!-- Bouton  -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="barButton">
+			<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+		</button>
+		<!-- Menu -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a href="{{ path('nao_core_home') }}" class="nav-link"><img src="{{ asset('home.png') }}" alt="Home"/> Accueil</a></li>
+				<li class="nav-item"><a href="{{ path('nao_bird_map') }}" class="nav-link"><img src="{{ asset('map.png') }}" alt="Map"/> Carte</a></li>
+				<li class="nav-item"><a href="{{ path('nao_bird_new_obs') }}" class="nav-link"><img src="{{ asset('search.png') }}" alt="News observation"/> Observation</a></li>
+				{% if is_granted('ROLE_USER') %}
+					<!-- Connecté -->
+					{% if is_granted('ROLE_NAT') %}
+						<li class="nav-item"><a href="{{ path('nao_bird_admin') }}" class="nav-link"><img src="{{ asset('user.png') }}" alt="User admin"/> Administration</a></li>
+					{% else %}
+						<li class="nav-item"><a href="{{ path('nao_bird_homepage') }}" class="nav-link"><img src="{{ asset('user.png') }}" alt="User"/>  {{ app.user.firstname }}</a></li>
+					{% endif %}
+					<li class="nav-item"><a href="{{ path('logout') }}" class="nav-link"><img src="{{ asset('logout.png') }}" alt="Logout"/>  Se déconnecter</a></li>
+					
+				{% else %}
+					<!-- Déconnecté -->
+					<li class="nav-item"><a href="{{ path('nao_bird_login') }}" class="nav-link"><img src="{{ asset('user.png') }}" alt="User"/> Se connecter</a></li>
+				{% endif %}
+				<li class="nav-item"><a href="{{ path('nao_core_about') }}" class="nav-link"><img src="{{ asset('about.png') }}" alt="About"/> A propos</a></li>		
+				<li class="nav-item"><a href="{{ path('nao_core_contact') }}" class="nav-link"><img src="{{ asset('contact.png') }}" alt="Contact"/> Contact</a></li>		
+			</ul>
+		</div>	
+	</div>
+</nav>
+
+<div id="burgerMenu">
+	<!-- Menu -->
+	<div id="itemBurgerMenu">
+		<a id="closeButton"><img src="{{ asset('cross.png') }}" alt="Cross"></a>
+		<a href="{{ path('nao_core_home') }}" class="nav-link">ACCUEIL</a>
+		<a href="{{ path('nao_bird_map') }}" class="nav-link">CARTE</a>
+		<a href="{{ path('nao_bird_new_obs') }}" class="nav-link"> OBSERVATION</a>
+		{% if is_granted('ROLE_USER') %}
+			<!-- Connecté -->
+			{% if is_granted('ROLE_NAT') %}
+				<a href="{{ path('nao_bird_admin') }}" class="nav-link">ADMINISTRATION</a>
+			{% else %}
+				<a href="{{ path('nao_bird_homepage') }}" class="nav-link">{{ app.user.firstname|upper }}</a>
+			{% endif %}
+			<a href="{{ path('logout') }}" class="nav-link">SE DÉCONNECTER</a>
+			
+		{% else %}
+			<!-- Déconnecté -->
+			<a href="{{ path('nao_bird_login') }}" class="nav-link">SE CONNECTER</a>
+		{% endif %}
+		<a href="{{ path('nao_core_about') }}" class="nav-link">À PROPOS</a>
+		<a href="{{ path('nao_core_contact') }}" class="nav-link">CONTACT</a>	
+	</div>
+</div>

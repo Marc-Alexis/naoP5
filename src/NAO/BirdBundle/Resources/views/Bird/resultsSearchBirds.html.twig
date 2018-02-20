@@ -1,0 +1,24 @@
+<div class="alert alert-primary" id="results">
+	<!-- Recherche par espèce -->
+	{% for species in allSpecies %}
+
+		<form method="POST" action="">
+			<input type="hidden" name="species" value="{{ species.species }}">
+			<button type="submit" title="Cliquer pour sélectionner une espèce.">{{ species.species }} ({{ species.birdname|lower|capitalize }})</button>
+		</form>
+	{% else %}
+
+		<!-- Recherche par nom d'oiseau -->
+		{% for birdnames in allBirdnames %}
+
+			<form method="POST" action="">
+				<input type="hidden" name="species" value="{{ birdnames.species }}">
+				<button type="submit" title="Cliquer pour sélectionner une espèce.">{{ birdnames.species }} ({{ birdnames.birdname|lower|capitalize }})</button>
+			</form>
+
+		{% else %}
+			Pas de résultat pour cette recherche.
+		{% endfor %}
+
+	{% endfor %}
+</div>

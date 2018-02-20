@@ -1,0 +1,229 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	<!-- Message flash -->
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}" id="msgAdmin">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	<section id="adminPage">
+
+		<!-- Title -->
+		<div id="adminTitle">
+			ESPACE D'ADMINISTRATION
+		</div>
+
+		<!-- Menu nav -->
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="nav nav-tabs" id="myTab" role="tablist">
+
+					<!-- Tableau des observations -->
+					<a class="nav-item nav-link active" id="nav-obs-tab" data-toggle="tab" href="#nav-obs" role="tab" aria-controls="nav-obs" aria-expanded="true">Observations</a>
+					<!-- Les utilisateurs -->
+					<a class="nav-item nav-link" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-expanded="true">Utilisateurs</a>
+					<!-- Les mesages -->
+					<a class="nav-item nav-link" id="nav-message-tab" data-toggle="tab" href="#nav-message" role="tab" aria-controls="nav-message" aria-expanded="true">Messages</a>
+					<!-- Les adresses pour la Newsletter -->
+					<a class="nav-item nav-link" id="nav-newsletter-tab" data-toggle="tab" href="#nav-newsletter" role="tab" aria-controls="nav-newsletter" aria-expanded="true">Newsletters</a>
+
+				</nav>
+
+				<div class="tab-content" id="nav-tabContent">
+
+					<!-- Tableau des observations -->
+					<div class="tab-pane fade show active" id="nav-obs" role="tabpanel" aria-labelledby="nav-obs-tab">
+						<table class="table table-responsive">
+							<tr id="firstTableRow">
+								<th>Observateur</th>
+								<th>Oiseau</th>
+								<th>Date d'observation</th>
+								<th>Coordonnées</th>
+								<th>Statut</th>
+								<th>Action</th>
+							</tr>
+							{% for obs in observations %}
+								<tr id="dataRow">
+									<td>{{  obs.user.firstname }} {{  obs.user.lastname }}</td>
+									<td>
+										<p>
+											<img src="/uploads/img/{{ obs.photo.filename }}" alt="{{ obs.photo.alt }}" title="{{  obs.birdname }}" id="birdPhoto">
+										<p>
+									</td>
+									<td>{{  obs.date|date('d/m/Y') }}</td>
+									<td>
+										Lat : {{  obs.latitude|round(3) }}<br>
+										Lng : {{  obs.longitude|round(3) }}
+									</td>
+									<td>
+										{% if obs.validated == true %}
+											Publié
+										{% else %}
+											Masqué
+										{% endif %}
+									</td>
+									<td>
+										{% if obs.user.roles[0] == 'ROLE_USER' %}
+											{% if obs.validated == false %}
+												<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
+													<input type="hidden" name="obsId" value="{{ obs.id }}">
+													<input type="hidden" name="validated" value="true">
+													<input type="hidden" name="obsToken" value="{{ obsToken }}">
+													<button type="submit" class="btn btn-outline-primary">Publié</button>
+												</form>
+											{% else %}
+												<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
+													<input type="hidden" name="obsId" value="{{ obs.id }}">
+													<input type="hidden" name="validated" value="false">
+													<input type="hidden" name="obsToken" value="{{ obsToken }}">
+													<button type="submit" class="btn btn-outline-warning">Masqué</button>
+												</form>
+											{% endif %}
+										{% endif %}
+									</td>
+								</tr>
+							{% else %}
+								<div class="alert alert-primary">
+									<i class="fa fa-info-circle" aria-hidden="true"></i> Il n'y a pas d'observation pour l'instant.
+								</div>
+							{% endfor %}
+						</table>
+					</div>
+					
+					<!-- Les utilisateurs -->
+					<div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+						 <table class="table table-responsive">
+						 	<tr id="firstTableRow">
+						 		<th>Prénom</th>
+						 		<th>Nom </th>
+						 		<th>Courriel</th>
+						 		<th>Statut</th>
+						 		<th>Action</th>
+						 	<tr>
+						 	{% for user in users %}
+						 		<tr id="dataRow">
+						 			<td>{{ user.firstname }}</td>
+						 			<td>{{ user.lastname }}</td>
+						 			<td>{{ user.username }}</td>
+						 			<td>
+						 				{% if user.roles[0] == 'ROLE_USER' %}
+						 					Utilisateur
+						 				{% else %}
+						 					Naturaliste
+						 				{% endif %}
+						 			</td>
+						 			<td>
+						 				{% if user.roles[0] == 'ROLE_USER' %}
+						 					<form action="{{ path('nao_bird_edit_user') }}" method="POST">
+						 						<input type="hidden" name="userId" value="{{ user.id }}">
+						 						<input type="hidden" name="roles" value="ROLE_NAT">
+						 						<input type="hidden" name="userToken" value="{{ userToken }}">
+						 						<button type="submit" class="btn btn-outline-primary">Naturaliste</button>
+						 					</form>
+						 				{% else %}
+						 					<form action="{{ path('nao_bird_edit_user') }}" method="POST">
+						 						<input type="hidden" name="userId" value="{{ user.id }}">
+						 						<input type="hidden" name="roles" value="ROLE_USER">
+						 						<input type="hidden" name="userToken" value="{{ userToken }}">
+						 						<button type="submit" class="btn btn-outline-warning">Utilisateur</button>
+						 					</form>
+						 				{% endif %}
+						 			</td>
+						 		<tr>
+						 	{% endfor %}
+						 </table>
+					</div>
+
+					<!-- Les messages -->
+					<div class="tab-pane fade" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">
+						 <table class="table table-responsive">
+						 	<tr id="firstTableRow">
+						 		<th>Courriel</th>
+						 		<th>Message</th>
+						 		<th>Envoyé le</th>
+						 		<th>Statut</th>
+						 		<th>Action</th>
+						 	<tr>
+						 	{% for message in messages %}
+						 		{% if message.msgRead == false %}
+							 		<tr id="dataRow">
+							 			<th>
+							 				{{ message.mail }}
+							 			</th>
+							 			<th>{{ message.content }}</th>
+							 			<th>
+							 				Message non lus
+							 			</th>
+							 			<th>{{ message.createAt|date('d/m/Y à H:i') }}</th>
+							 			<th>
+							 				<form method="POST" action="{{ path('nao_bird_edit_message') }}">
+							 					<input type="hidden" name="msgId" value="{{ message.id }}">
+							 					<input type="hidden" name="msgRead" value="true">
+							 					<input type="hidden" name="msgToken" value="{{ messageToken }}">
+							 					<button class="btn btn-outline-primary">Marquer comme lus</button>
+							 				</form>
+							 			</th>
+							 		<tr>
+						 		{% else %}
+						 			<tr id="dataRow">
+						 				<td>
+						 					{{ message.mail }}
+						 				</td>
+						 				<td>{{ message.content }}</td>
+						 				<td>{{ message.createAt|date('d/m/Y à H:i') }}</td>
+						 				<td>
+						 					Message lus
+						 				</td>
+						 				<td>
+						 					<form method="POST" action="{{ path('nao_bird_edit_message') }}">
+						 						<input type="hidden" name="msgId" value="{{ message.id }}">
+						 						<input type="hidden" name="msgRead" value="false">
+						 						<input type="hidden" name="msgToken" value="{{ messageToken }}">
+						 						<button class="btn btn-outline-warning">Marquer comme non lus</button>
+						 					</form>
+						 				</td>
+						 			<tr>
+						 		{% endif %}
+						 	{% else %}
+						 		<div class="alert alert-primary">
+						 			Il n'y a pas de message pour l'instant.
+						 		</div>
+						 	{% endfor %}
+						 </table>
+					</div>
+
+					<!-- Les messages -->
+					<div class="tab-pane fade" id="nav-newsletter" role="tabpanel" aria-labelledby="nav-newsletter-tab">
+						 <table class="table table-responsive">
+						 	<tr id="firstTableRow">
+						 		<th>Courriel</th>
+						 		<th>Envoyé le</th>
+						 	<tr>
+						 	{% for newsletter in newsletters %}
+							 		<tr id="dataRow">
+							 			<td>
+							 				{{ newsletter.mail }}
+							 			</td>
+							 			<td>
+							 				{{ newsletter.createAt|date('d/m/Y à H:i') }}
+							 			</td>
+							 		<tr>
+						 	{% else %}
+						 		<div class="alert alert-primary">
+						 			Il n'y a pas d'adresse pour l'instant.
+						 		</div>
+						 	{% endfor %}
+						 </table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

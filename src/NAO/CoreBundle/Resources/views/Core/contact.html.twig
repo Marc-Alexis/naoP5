@@ -1,0 +1,55 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	<!-- Message flash -->
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}" id="msgContact">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	<section class="container" id="contactPage">
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-9" id="contactTitle">NOUS CONTACTER</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<!-- Formulaire de message -->
+			<div class="col-lg-5" id="formContact">
+				<br>
+				{{ form_start(messageType, {'attr': {'id': 'messageForm'}}) }}
+					<div class="form-group">
+					      	{{ form_widget(messageType.mail, {'attr': {'class': 'form-control', 'placeholder': 'Votre mail...'}}) }}
+					      	{{ form_errors(messageType.mail) }}
+					</div>
+					<div class="form-group">
+			                    	{{ form_widget(messageType.content, {'attr': {'class': 'form-control', 'placeholder': 'Votre message...', 'rows': '5'}}) }}
+			                    	{{ form_errors(messageType.content) }}
+					</div>
+					<button class="btn btn-outline-primary"> ENVOYER</button>
+		      		{{ form_end(messageType) }}
+			</div>
+			<!-- Coordonnées-->
+			<div class="col-lg-4" id="coord">
+				<br>
+				<p><strong>NOS AMIS LES OISEAUX</strong></p>
+
+				<p id="address">8 allée Evariste Galois<br>
+				Parc Techonologique de la Pardieu<br>
+				63000 Clermont-Ferrand 
+				</p>
+
+				<p>04 00 12 34 56</p>
+
+				<p>contact@nosamislesoiseaux.fr</p>
+
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

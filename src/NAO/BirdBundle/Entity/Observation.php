@@ -1,0 +1,290 @@
+<?php
+
+namespace NAO\BirdBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Observation
+ *
+ * @ORM\Table(name="observation")
+ * @ORM\Entity(repositoryClass="NAO\BirdBundle\Repository\ObservationRepository")
+ */
+class Observation
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="birdname", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez entrer un nom d'oiseau")
+     * @Assert\Type(type="string", message="Vous devez choisir un nom d'oiseau valide.")
+     * @Assert\NotEqualTo(value="-",  message="Vous devez choisir une espèce valide.")
+     */
+    private $birdname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="species", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez choisir une espèce.")
+     * @Assert\Type(type="string", message="Vous devez choisir une espèce d'oiseau valide.")
+     */
+    private $species;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     * @Assert\NotBlank(message="Vous devez choisir une date et une heure d'observation")
+     * @Assert\LessThanOrEqual("today", message="Vous devez choisir une date valide")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez choisir une latitude")
+     * @Assert\Regex(pattern="/[0-9.]{1,}/",  message="Vous devez choisir une latitude valide")
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez choisir une longitude")
+     * @Assert\Regex(pattern="/[0-9.]{1,}/",  message="Vous devez choisir une latitude valide")
+     */
+    private $longitude;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="validated", type="boolean", nullable=true)
+     */
+    private $validated;
+
+    /**
+       * @ORM\OneToOne(targetEntity="NAO\BirdBundle\Entity\Photo", cascade={"persist"})
+       */
+      private $photo;
+
+      /**
+         * @ORM\ManyToOne(targetEntity="NAO\BirdBundle\Entity\User")
+         */
+        private $user;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set birdname
+     *
+     * @param string $birdname
+     *
+     * @return Observation
+     */
+    public function setBirdname($birdname)
+    {
+        $this->birdname = htmlspecialchars(strtoupper($birdname));
+
+        return $this;
+    }
+
+    /**
+     * Get birdname
+     *
+     * @return string
+     */
+    public function getBirdname()
+    {
+        return $this->birdname;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Observation
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set validated
+     *
+     * @param boolean $validated
+     *
+     * @return Observation
+     */
+    public function setValidated($validated)
+    {
+        $this->validated = htmlspecialchars($validated);
+
+        return $this;
+    }
+
+    /**
+     * Get validated
+     *
+     * @return bool
+     */
+    public function getValidated()
+    {
+        return $this->validated;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     *
+     * @return Observation
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = htmlspecialchars($latitude);
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     *
+     * @return Observation
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = htmlspecialchars($longitude);
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param \NAO\BirdBundle\Entity\Photo $photo
+     *
+     * @return Observation
+     */
+    public function setPhoto(\NAO\BirdBundle\Entity\Photo $photo = null)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return \NAO\BirdBundle\Entity\Photo
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \NAO\BirdBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\NAO\BirdBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NAO\BirdBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set species
+     *
+     * @param string $species
+     *
+     * @return Observation
+     */
+    public function setSpecies($species)
+    {
+        $this->species = $species;
+
+        return $this;
+    }
+
+    /**
+     * Get species
+     *
+     * @return string
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+}

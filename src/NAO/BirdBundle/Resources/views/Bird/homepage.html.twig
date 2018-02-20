@@ -1,0 +1,57 @@
+{% extends 'NAOCoreBundle:Core:layout.html.twig' %}
+
+{% block section %}
+
+	<section id="homepagePage">
+		<!-- Message flash -->
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<!-- Title -->
+		<div id="homepageTitle">
+			{{ app.user.firstname }} {{ app.user.lastname }}
+		</div>
+
+		<!-- Observation de l'utilisateur -->
+		<div id="blockObsUser">
+			<table class="table table-responsive">
+				<tr id="rowHeadUser">
+					<th>Oiseau</th>
+					<th>Date d'observation</th>
+					<th>Coordonnées</th>
+					<th>Statut</th>
+				</tr>
+				{% for obs in observations %}
+					<tr id="rowDataUser">
+						<td>
+							<img src="/nao/web/uploads/img/{{ obs.photo.filename }}" alt="{{ obs.photo.alt }}" id="birdPhoto">
+						</td>
+						<td>{{ obs.date|date('d/m/Y') }}</td>
+						<td>
+							Latitude : {{ obs.latitude|round(3) }}<br>
+							Longitude : {{ obs.longitude|round(3) }}
+						</td>
+						<td>
+							{% if obs.validated == null %}
+								A valider
+							{% else %}
+								Validé
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td>Ajouté une <a href="{{ path('nao_bird_new_obs') }}" title="Nouvelle observation">nouvelle observation</a>.</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+	</section>
+
+{% endblock %}
