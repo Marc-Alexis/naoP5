@@ -74,14 +74,14 @@
 													<input type="hidden" name="obsId" value="{{ obs.id }}">
 													<input type="hidden" name="validated" value="true">
 													<input type="hidden" name="obsToken" value="{{ obsToken }}">
-													<button type="submit" class="btn btn-outline-primary">Publié</button>
+													<button type="submit" class="btn btn-outline-primary">Publier</button>
 												</form>
 											{% else %}
 												<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
 													<input type="hidden" name="obsId" value="{{ obs.id }}">
 													<input type="hidden" name="validated" value="false">
 													<input type="hidden" name="obsToken" value="{{ obsToken }}">
-													<button type="submit" class="btn btn-outline-warning">Masqué</button>
+													<button type="submit" class="btn btn-outline-warning">Masquer</button>
 												</form>
 											{% endif %}
 										{% endif %}

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e1b930-1bfc-43ea-8a35-805f3580aab1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/homepage.html.twig" afterPath="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/homepage.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig" afterPath="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,17 +79,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="admin.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1012">
-              <caret line="77" column="55" lean-forward="true" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+            <state relative-caret-position="437">
+              <caret line="76" column="113" lean-forward="false" selection-start-line="76" selection-start-column="113" selection-end-line="76" selection-end-column="113" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="homepage.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/homepage.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="713">
@@ -135,7 +135,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Core/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/routing_dev.yml" />
@@ -146,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/nao.css" />
         <option value="$PROJECT_DIR$/src/NAO/BirdBundle/Entity/Observation.php" />
         <option value="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/homepage.html.twig" />
+        <option value="$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig" />
       </list>
     </option>
   </component>
@@ -308,12 +308,12 @@
       <workItem from="1518612366575" duration="2313000" />
       <workItem from="1518666485250" duration="3110000" />
       <workItem from="1519027096918" duration="2002000" />
-      <workItem from="1520343082129" duration="286000" />
+      <workItem from="1520343082129" duration="551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7711000" />
+    <option name="totallyTimeSpent" value="7976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -668,14 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="77" column="55" lean-forward="true" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/homepage.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
@@ -683,6 +675,14 @@
           <folding>
             <element signature="e#12#47#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/BirdBundle/Resources/views/Bird/admin.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="76" column="113" lean-forward="false" selection-start-line="76" selection-start-column="113" selection-end-line="76" selection-end-column="113" />
+          <folding />
         </state>
       </provider>
     </entry>
