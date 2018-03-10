@@ -38,6 +38,59 @@
 
 					<!-- Tableau des observations -->
 					<div class="tab-pane fade show active" id="nav-obs" role="tabpanel" aria-labelledby="nav-obs-tab">
+						<!-- Tableau en mode mobile -->
+						<div id="tableObsRes">
+							{% for obs in observations %}
+								<p>
+									<div id="tableObsResTitle">
+										<strong >OBSERVATION N°{{ loop.index }}</strong><br>
+									</div>
+
+									<strong>Oiseau : </strong><br>
+									{{  obs.birdname }}<br>
+
+									<img src="/nao/web/uploads/img/{{ obs.photo.filename }}" alt="{{ obs.photo.alt }}" title="{{  obs.birdname }}" id="birdPhoto">
+									<br>
+
+									<strong>Obervé le : </strong>{{  obs.date|date('d/m/Y') }}<br>
+
+									<strong>Par : </strong>{{ obs.user.firstname }} {{ obs.user.lastname }}<br>
+
+									<strong>Coordonnées : </strong><br>
+									Lat : {{  obs.latitude|round(3) }}
+									Lng : {{  obs.longitude|round(3) }}<br>
+
+									<strong>Statut : </strong>
+										{% if obs.validated == true %}
+											Publié
+										{% else %}
+											Masqué
+										{% endif %}
+									<br>
+
+									{% if obs.user.roles[0] == 'ROLE_USER' %}
+										<strong>Action : </strong><br>
+										{% if obs.validated == false %}
+											<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
+												<input type="hidden" name="obsId" value="{{ obs.id }}">
+												<input type="hidden" name="validated" value="true">
+												<input type="hidden" name="obsToken" value="{{ obsToken }}">
+												<button type="submit" class="btn btn-outline-primary">Publié</button>
+											</form>
+										{% else %}
+											<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
+												<input type="hidden" name="obsId" value="{{ obs.id }}">
+												<input type="hidden" name="validated" value="false">
+												<input type="hidden" name="obsToken" value="{{ obsToken }}">
+												<button type="submit" class="btn btn-outline-warning">Masqué</button>
+											</form>
+										{% endif %}
+									{% endif %}
+								</p>
+								<br>
+							{% endfor %}
+						</div>
+
 						<table class="table table-responsive">
 							<tr id="firstTableRow">
 								<th>Observateur</th>
@@ -52,7 +105,7 @@
 									<td>{{  obs.user.firstname }} {{  obs.user.lastname }}</td>
 									<td>
 										<p>
-											<img src="/uploads/img/{{ obs.photo.filename }}" alt="{{ obs.photo.alt }}" title="{{  obs.birdname }}" id="birdPhoto">
+											<img src="/nao/web/uploads/img/{{ obs.photo.filename }}" alt="{{ obs.photo.alt }}" title="{{  obs.birdname }}" id="birdPhoto">
 										<p>
 									</td>
 									<td>{{  obs.date|date('d/m/Y') }}</td>
@@ -74,14 +127,14 @@
 													<input type="hidden" name="obsId" value="{{ obs.id }}">
 													<input type="hidden" name="validated" value="true">
 													<input type="hidden" name="obsToken" value="{{ obsToken }}">
-													<button type="submit" class="btn btn-outline-primary">Publier</button>
+													<button type="submit" class="btn btn-outline-primary">Publié</button>
 												</form>
 											{% else %}
 												<form action="{{ path('nao_bird_edit_obs') }}" method="POST">
 													<input type="hidden" name="obsId" value="{{ obs.id }}">
 													<input type="hidden" name="validated" value="false">
 													<input type="hidden" name="obsToken" value="{{ obsToken }}">
-													<button type="submit" class="btn btn-outline-warning">Masquer</button>
+													<button type="submit" class="btn btn-outline-warning">Masqué</button>
 												</form>
 											{% endif %}
 										{% endif %}
@@ -97,6 +150,53 @@
 					
 					<!-- Les utilisateurs -->
 					<div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+
+						<!-- Tableau en mode mobile -->
+						<div id="tableObsRes">
+							{% for user in users %}
+								<p>
+									<div id="tableObsResTitle">
+										<strong >UTILISATEUR N°{{ loop.index }}</strong><br>
+									</div>
+
+									<strong>Prénom : </strong><br>
+									{{  user.firstname }}<br>
+
+									<strong>Nom de famille : </strong><br>
+									{{  user.lastname }}<br>
+
+									<strong>Courriel : </strong><br>
+									{{  user.username }}<br>
+
+									<strong>Statut : </strong><br>
+									{% if user.roles[0] == 'ROLE_USER' %}
+						 				Utilisateur
+						 			{% else %}
+						 				Naturaliste
+						 			{% endif %}
+						 			<br>
+
+									<strong>Action : </strong><br>
+									{% if user.roles[0] == 'ROLE_USER' %}
+										<form action="{{ path('nao_bird_edit_user') }}" method="POST">
+											<input type="hidden" name="userId" value="{{ user.id }}">
+											<input type="hidden" name="roles" value="ROLE_NAT">
+											<input type="hidden" name="userToken" value="{{ userToken }}">
+											<button type="submit" class="btn btn-outline-primary">Naturaliste</button>
+										</form>
+									{% else %}
+										<form action="{{ path('nao_bird_edit_user') }}" method="POST">
+											<input type="hidden" name="userId" value="{{ user.id }}">
+											<input type="hidden" name="roles" value="ROLE_USER">
+											<input type="hidden" name="userToken" value="{{ userToken }}">
+											<button type="submit" class="btn btn-outline-warning">Utilisateur</button>
+										</form>
+									{% endif %}
+								</p>
+								<br>
+							{% endfor %}
+						</div>
+
 						 <table class="table table-responsive">
 						 	<tr id="firstTableRow">
 						 		<th>Prénom</th>
@@ -141,6 +241,56 @@
 
 					<!-- Les messages -->
 					<div class="tab-pane fade" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">
+
+
+						<!-- Tableau en mode mobile -->
+						<div id="tableObsRes">
+							{% for message in messages %}
+								<p>
+									<div id="tableObsResTitle">
+										<strong>MESSAGE N°{{ loop.index }}</strong><br>
+									</div>
+
+									<strong>Courriel : </strong><br>
+									{{  message.mail }}<br>
+
+									<strong>Message : </strong><br>
+									{{  message.content }}<br>
+
+									<strong>Envoyé le : </strong><br>
+									{{  message.content  }}<br>
+
+
+									<strong>Statut : </strong><br>
+									{% if message.msgRead == false %}
+										Message non lus
+									{% else %}
+										Message lus
+									{% endif %}
+						 			<br>
+
+									<strong>Action : </strong><br>
+									 {% if message.msgRead == false %}
+										<form method="POST" action="{{ path('nao_bird_edit_message') }}">
+											<input type="hidden" name="msgId" value="{{ message.id }}">
+											<input type="hidden" name="msgRead" value="true">
+											<input type="hidden" name="msgToken" value="{{ messageToken }}">
+											<button class="btn btn-outline-primary">Marquer comme lus</button>
+										</form>
+										
+									 {% else %}
+										 <form method="POST" action="{{ path('nao_bird_edit_message') }}">
+										 	<input type="hidden" name="msgId" value="{{ message.id }}">
+										 	<input type="hidden" name="msgRead" value="false">
+										 	<input type="hidden" name="msgToken" value="{{ messageToken }}">
+										 	<button class="btn btn-outline-warning">Marquer comme non lus</button>
+										 </form>
+									 {% endif %}
+								</p>
+								<br>
+							{% endfor %}
+						</div>
+
 						 <table class="table table-responsive">
 						 	<tr id="firstTableRow">
 						 		<th>Courriel</th>
@@ -150,45 +300,23 @@
 						 		<th>Action</th>
 						 	<tr>
 						 	{% for message in messages %}
-						 		{% if message.msgRead == false %}
 							 		<tr id="dataRow">
 							 			<th>
 							 				{{ message.mail }}
 							 			</th>
 							 			<th>{{ message.content }}</th>
 							 			<th>
-							 				Message non lus
+						 					{% if message.msgRead == false %}
+							 					Message non lus
+						 					{% else %}
+						 						Message lus
+						 					{% endif %}
 							 			</th>
 							 			<th>{{ message.createAt|date('d/m/Y à H:i') }}</th>
 							 			<th>
-							 				<form method="POST" action="{{ path('nao_bird_edit_message') }}">
-							 					<input type="hidden" name="msgId" value="{{ message.id }}">
-							 					<input type="hidden" name="msgRead" value="true">
-							 					<input type="hidden" name="msgToken" value="{{ messageToken }}">
-							 					<button class="btn btn-outline-primary">Marquer comme lus</button>
-							 				</form>
+						 					
 							 			</th>
 							 		<tr>
-						 		{% else %}
-						 			<tr id="dataRow">
-						 				<td>
-						 					{{ message.mail }}
-						 				</td>
-						 				<td>{{ message.content }}</td>
-						 				<td>{{ message.createAt|date('d/m/Y à H:i') }}</td>
-						 				<td>
-						 					Message lus
-						 				</td>
-						 				<td>
-						 					<form method="POST" action="{{ path('nao_bird_edit_message') }}">
-						 						<input type="hidden" name="msgId" value="{{ message.id }}">
-						 						<input type="hidden" name="msgRead" value="false">
-						 						<input type="hidden" name="msgToken" value="{{ messageToken }}">
-						 						<button class="btn btn-outline-warning">Marquer comme non lus</button>
-						 					</form>
-						 				</td>
-						 			<tr>
-						 		{% endif %}
 						 	{% else %}
 						 		<div class="alert alert-primary">
 						 			Il n'y a pas de message pour l'instant.
@@ -200,6 +328,26 @@
 					<!-- Les messages -->
 					<div class="tab-pane fade" id="nav-newsletter" role="tabpanel" aria-labelledby="nav-newsletter-tab">
 						 <table class="table table-responsive">
+
+
+						 	<!-- Tableau en mode mobile -->
+						 	<div id="tableObsRes">
+						 		{% for newsletter in newsletters %}
+						 			<p>
+						 				<div id="tableObsResTitle">
+						 					<strong>NEWSLETTER N°{{ loop.index }}</strong><br>
+						 				</div>
+
+						 				<strong>Courriel : </strong><br>
+						 				{{ newsletter.mail }}<br>
+
+						 				<strong>Envoyé le : </strong><br>
+						 				{{ newsletter.createAt|date('d/m/Y à H:i') }}<br>
+						 			</p>
+						 			<br>
+						 		{% endfor %}
+						 	</div>
+
 						 	<tr id="firstTableRow">
 						 		<th>Courriel</th>
 						 		<th>Envoyé le</th>
